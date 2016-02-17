@@ -5,5 +5,14 @@
   "author": "Jon Lauridsen",
   "scripts": {
     "live-examples": "node live-examples"
+  },
+  "dependencies": {
+    "github": "^0.2.4",
+    "q": "^1.4.1",
+    "validate.js": "^0.9.0",
+    "validate.js-enum": "gaggle/validate.js-enum"
+  },
+  "devDependencies": {
+    "must": "^0.13.1"
   }
 }
