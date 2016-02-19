@@ -4,6 +4,8 @@
   "main": "index.js",
   "author": "Jon Lauridsen",
   "scripts": {
+    "test": "mocha",
+    "coverage": "istanbul cover --dir ./.coverage _mocha --include-all-sources -- -R spec",
     "live-examples": "node live-examples"
   },
   "dependencies": {
@@ -13,6 +15,8 @@
     "validate.js-enum": "gaggle/validate.js-enum"
   },
   "devDependencies": {
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
     "must": "^0.13.1"
   }
 }
