@@ -5,7 +5,7 @@ var gri = require("./")
 
 var testGetStatus = function () {
   return gri.status.getStatus("user", "repo", "sha",
-                              gri.status.STATE.success, "context",
+                              gri.status.state.success, "context",
                               "description", "http://target.url")
     .then(function (status) {
       render("gri.status.getStatus", JSON.stringify(status, null, 2))

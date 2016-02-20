@@ -24,16 +24,20 @@ var Manager = function (opts) {
 var extensions = [
   {prefix: "issues", module: require("./lib/issues")},
   {prefix: "pullRequest", module: require("./lib/pr")},
-  //{prefix: "status", module: require("./lib/status")}
+  {prefix: "statuses", module: require("./lib/statuses")}
 ]
 extensions.forEach(function (data) {
   Object.defineProperty(Manager.prototype, data.prefix, {
     get: function () {
       var self = this
       var f = {}
-      for (var fName in data.module)
-        if (_.isFunction(data.module[fName]))
-          f[fName] = data.module[fName].bind(self)
+      for (var name in data.module) {
+        var func = data.module[name]
+        if (_.isFunction(func))
+          f[name] = func.bind(self)
+        else
+          f[name] = data.module[name]
+      }
       return f
     },
     enumerable: false,
