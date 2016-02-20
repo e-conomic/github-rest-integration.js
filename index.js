@@ -1,5 +1,6 @@
 "use strict";
 var GitHub = require("github")
+var _ = require("lodash")
 var getSettings = require("./lib/settings")
 
 var Manager = function (opts) {
@@ -21,16 +22,18 @@ var Manager = function (opts) {
 }
 
 var extensions = [
-  {prefix: "pullRequest", module: require("./lib/pr")}
+  {prefix: "issues", module: require("./lib/issues")},
+  {prefix: "pullRequest", module: require("./lib/pr")},
+  //{prefix: "status", module: require("./lib/status")}
 ]
 extensions.forEach(function (data) {
   Object.defineProperty(Manager.prototype, data.prefix, {
     get: function () {
       var self = this
       var f = {}
-      for (var fName in data.module) {
-        f[fName] = data.module[fName].bind(self)
-      }
+      for (var fName in data.module)
+        if (_.isFunction(data.module[fName]))
+          f[fName] = data.module[fName].bind(self)
       return f
     },
     enumerable: false,
