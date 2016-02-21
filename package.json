@@ -1,18 +1,24 @@
 {
   "name": "github-rest-integration.js",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "main": "index.js",
   "author": "Jon Lauridsen",
   "scripts": {
+    "test": "mocha",
+    "coverage": "istanbul cover --dir ./.coverage _mocha --include-all-sources -- -R spec",
     "live-examples": "node live-examples"
   },
   "dependencies": {
     "github": "^0.2.4",
+    "lodash": "^4.5.0",
     "q": "^1.4.1",
     "validate.js": "^0.9.0",
     "validate.js-enum": "gaggle/validate.js-enum"
   },
   "devDependencies": {
-    "must": "^0.13.1"
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
+    "must": "^0.13.1",
+    "sinon": "^1.17.3"
   }
 }
