@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "coverage": "istanbul cover --dir ./.coverage _mocha --include-all-sources -- -R spec",
-    "live-examples": "node live-examples"
+    "coveralls": "istanbul cover --dir ./.coverage _mocha --include-all-sources --report lcovonly -- -R spec && cat ./.coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./.coverage"
   },
   "dependencies": {
     "github": "^0.2.4",
@@ -16,8 +16,10 @@
     "validate.js-enum": "gaggle/validate.js-enum"
   },
   "devDependencies": {
+    "coveralls": "^2.11.8",
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
+    "mocha-lcov-reporter": "^1.2.0",
     "must": "^0.13.1",
     "sinon": "^1.17.3"
   }
