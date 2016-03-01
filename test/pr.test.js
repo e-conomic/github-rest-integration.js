@@ -20,7 +20,7 @@ describe("#pullRequest", function () {
   describe("#get", function () {
     it("should call correctly", function () {
       stub.pullRequests.get.yields(null, "data")
-      return gri.pullRequest.get("user", "repo", 1)
+      return gri.pullRequests.get({user: "user", repo: "repo", number: 1})
         .must.resolve.to.eql("data")
     })
   })

@@ -21,7 +21,7 @@ describe("github-rest-integration.js", function () {
       gri = new Gri()
     })
 
-    var methods = ["pullRequest.get"]
+    var methods = ["pullRequests.get"]
     methods.forEach(function (meth) {
       it(s("should expose %s", meth), function () {
         expect(_.get(gri, meth), s("%s not exposed", meth))

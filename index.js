@@ -23,7 +23,7 @@ var Manager = function (opts) {
 
 var extensions = [
   {prefix: "issues", module: require("./lib/issues")},
-  {prefix: "pullRequest", module: require("./lib/pr")},
+  {prefix: "pullRequests", module: require("./lib/pr")},
   {prefix: "statuses", module: require("./lib/statuses")}
 ]
 extensions.forEach(function (data) {
