@@ -33,17 +33,18 @@ extensions.forEach(function (data) {
   Object.defineProperty(Manager.prototype, prefix, {
     get: function () {
       var self = this
-      if (!self._f) {
-        self._f = {}
+      var propertyName = "_" + prefix
+      if (!self[propertyName]) {
+        self[propertyName] = {}
         for (var name in module) {
           var func = module[name]
           if (_.isFunction(func))
-            self._f[name] = func.bind(self)
+            self[propertyName][name] = func.bind(self)
           else
-            self._f[name] = func
+            self[propertyName][name] = func
         }
       }
-      return self._f
+      return self[propertyName]
     },
     enumerable: false,
     configurable: true

@@ -28,5 +28,9 @@ describe("github-rest-integration.js", function () {
           .to.be.a.function()
       })
     })
+
+    it("should not clobber namespaces", function () {
+      expect(gri.issues).to.not.equal(gri.repos)
+    })
   })
 })
