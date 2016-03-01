@@ -27,17 +27,19 @@ var extensions = [
   {prefix: "statuses", module: require("./lib/statuses")}
 ]
 extensions.forEach(function (data) {
-  Object.defineProperty(Manager.prototype, data.prefix, {
+  var prefix = data.prefix
+  var module = data.module
+  Object.defineProperty(Manager.prototype, prefix, {
     get: function () {
       var self = this
       if (!self._f) {
         self._f = {}
-        for (var name in data.module) {
-          var func = data.module[name]
+        for (var name in module) {
+          var func = module[name]
           if (_.isFunction(func))
             self._f[name] = func.bind(self)
           else
-            self._f[name] = data.module[name]
+            self._f[name] = func
         }
       }
       return self._f
