@@ -22,6 +22,7 @@ var Manager = function (opts) {
 }
 
 var extensions = [
+  {prefix: "gitdata", module: require("./lib/gitdata")},
   {prefix: "issues", module: require("./lib/issues")},
   {prefix: "pullRequests", module: require("./lib/pr")},
   {prefix: "repos", module: require("./lib/repos")},
